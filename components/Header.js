@@ -1,7 +1,7 @@
-import nav from './Nav.js'
-import cart from './Cart.js'
+
+
 class Header{
-    create (){
+    create (navModule){
         this.element = document.createElement('header')
         this.element.classList.add('header')
 
@@ -11,17 +11,24 @@ class Header{
                                         <a href="/">
                                             <img src ="images/logo2.jpg">
                                         </a>
-                                        ${nav.outerHTML}
+                                        ${navModule.outerHTML}
                                     </div>
-                              
-                                    ${cart.outerHTML}
+                                                              
                                 </div>`
                     return this.element            
 
     }
+    getNav(){
+        return import('./Nav.js')
+        .then(nav => {
+            let navModule = nav.default
+            console.log(navModule)
+           return this.create(navModule)
+        })
 
+    }
     init(){
-        return this.create()
+        return this.getNav()
 
     }
 }

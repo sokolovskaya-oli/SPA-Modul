@@ -1,19 +1,8 @@
-import header from './Header.js'
-import main from './Main.js'
-import footer from './Footer.js'
-import data from './Data.js'
-
 class App{
     
     create(){
         this.app = document.createElement('div')
         this.app.classList.add('app')
-        this.app.appendChild(header)
-        this.app.appendChild(main)
-        this.app.appendChild(footer)
-
-        data.then(newData =>console.log(newData))
-
         document.body.appendChild(this.app)
     }
 
@@ -23,9 +12,36 @@ class App{
             let headTitle = head.title
             headTitle.innerHTML = "Style Furniture",
 
-            this.create()
-        })
-    }
+            import('./Data.js')
+            .then(data => (data.default)
+                .then(defaultData => {
+                    localStorage.setItem('spadata',defaultData)
+                    this.create()
+
+                    import('./Header.js')
+                    .then(header => {
+                        let moduleHeader = header.default
+                        moduleHeader.then(newHeader =>{
+                            this.app.appendChild(newHeader)
+    
+                            import('./Main.js')
+                            .then(main => {
+                            let moduleMain = main.default
+                            this.app.appendChild(moduleMain)
+    
+                                import('./Footer.js')
+                                    .then(footer =>{
+                                    let footerModule =footer.default
+                                    this.app.appendChild(footerModule)
+                                    })
+                             })
+                        })
+                })
+                            
+                }))
+         })
+        }    
 }
+
 const app = new App().init()
 export default app

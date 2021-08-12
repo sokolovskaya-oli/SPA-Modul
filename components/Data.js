@@ -1,7 +1,7 @@
 class Data{
     async getData(){
         return await fetch('../data/data.json')
-        .then((resp)=>resp.json())
+        .then((resp)=>resp.text())
         .then((data)=>data)
     }
     init(){
