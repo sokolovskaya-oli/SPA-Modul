@@ -9,7 +9,7 @@ class Header{
                                 <div class="container">
                                     <div class = "header_logo">
                                         <a href="/">
-                                            <img src ="images/logo2.jpg">
+                                            <img src ="images/logo1.png">
                                         </a>
                                         ${navModule.outerHTML}
                                     </div>
