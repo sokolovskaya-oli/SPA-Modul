@@ -13,6 +13,7 @@ class Header{
                                         </a>
                                         ${navModule.outerHTML}
                                     </div>
+                                    <div class="header_counter">🛒 2</div>
                                                               
                                 </div>`
                     return this.element            
@@ -22,7 +23,7 @@ class Header{
         return import('./Nav.js')
         .then(nav => {
             let navModule = nav.default
-            console.log(navModule)
+            
            return this.create(navModule)
         })
 

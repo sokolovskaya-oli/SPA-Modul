@@ -12,8 +12,8 @@ class Footer{
         </div>
         <div class="container_footer__info">
             <span> Адрес: г. Минск, пр-т Дзержинского 19Б, нижний уровень</span>
-            <span> Тел.: +375 29 666-66-66</span>
-            <span>Email: info@moda.by</span>
+            <span> Тел.:<a href="#" type="tel"> +375 29 666-66-66</a></span>
+            <span>Email: <a href="#" type="email">info@moda.by</a></span>
         </div>
         <div class = "container_footer__social">
         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
