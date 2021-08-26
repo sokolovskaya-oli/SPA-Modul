@@ -27,7 +27,7 @@ width: 100%;
     
     align-items: center;
     justify-content: start;
-    z-index: 50;
+   
 }
 
 .nav a{
@@ -59,8 +59,11 @@ nav a:hover{
 
 }
 .header_counter{
-font-weight: bold;
-cursor: pointer;
+    color:#f6ebe4;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: #808080;
+    cursor: pointer;
+    font-size: 34px;
 }
 .container_main_box{
      width: 80%;
@@ -152,13 +155,10 @@ cursor: pointer;
     width: 230px;
     height: 50px;
 }
-.product__btn_active{
-    border: 1px solid transparent;
-    background-color: linear-gradient(to left, #f0d332,#fda80a);
-}
+
 .product__btn:hover{
-    background-color:indianred
-}
+    background-color:rgb(207, 178, 178);
+    }
 
 .product_box{
     display: flex;
@@ -195,6 +195,40 @@ cursor: pointer;
 #prev{
     margin-left: 10px;
 }
+.cart_wrapper{
+    position: relative;
+}
+.basket{
+    width: 97%;
+    height: 97vh;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    margin:auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow:0 16px 24px 2px rgba(33, 37, 41, .1);
+    margin-right: 20px;
+    
+} 
+.basket_title, .basket_price_total{
+    font-weight: bold;
+    padding: 20px;
+}
+.basket_counter, .basket_price{
+    padding: 20px; 
+}
+.basket__close{
+    position: absolute;
+    height: 35px;
+    width:35px;
+    top: 40px;
+    right: 40px;
+    font-size: 28px;
+}
+
+
 
 .container_footer{
     width: 80%;

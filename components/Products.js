@@ -53,7 +53,7 @@ this.product = (hash)=>{
         <div class="product_card_caption">
         <span class = "product_card__description">${product[0].description}</span>
         <span class = "product_card__price">${product[0].price} <small>BYN</small></span>
-        <button class="product__btn" id=${product.id}>Добавить в корзину</button>
+        
         </div>
         </div>
         `

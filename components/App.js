@@ -23,6 +23,22 @@ class App{
                         let moduleHeader = header.default
                         moduleHeader.then(newHeader =>{
                             this.app.appendChild(newHeader)
+
+                            this.cartBtn = document.querySelector('.header_counter')
+                            if(this.cartBtn){
+                                this.cartBtn.addEventListener('click',()=>{
+                                    import('./Cart.js').then((cart)=>{
+                                       this.cart = cart.default.init()
+                                       console.log(this.cart )
+                                       this.app.appendChild(this.cart)
+
+                                       this.closeBtn = document.querySelector('.basket__close')
+                                       this.closeBtn.addEventListener('click', ()=>{
+                                        document.querySelector('.basket').remove();
+                                       })
+                                    })
+                                })
+                            }
     
                             import('./Main.js')
                             .then(main => {

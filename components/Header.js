@@ -13,7 +13,7 @@ class Header{
                                         </a>
                                         ${navModule.outerHTML}
                                     </div>
-                                    <div class="header_counter">🛒 2</div>
+                                    <div class="header_counter"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
                                                               
                                 </div>`
                     return this.element            

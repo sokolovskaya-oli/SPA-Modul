@@ -1,6 +1,7 @@
 class Main{
     constructor(){
         this.data = JSON.parse(localStorage.getItem('spadata'))
+        this.basket = JSON.parse(localStorage.getItem('basket')) || []
     }
 
     create(){
@@ -34,30 +35,24 @@ class Main{
                     import('./Products.js')
                     .then(productData =>{
                         productData.default.init()
-                        /*import('./Cart.js')
-                        let btn = document.querySelector('.header_counter')
-                        btn.AddEventListener('click',()=>{
-                            this.element.innerHTML=`${this.list}
-                                                    <tr>
-                                                    <td class ="cart_total">Total costs: <small>BYN</small></td>
-                                                    </tr>`
-                            
-                            this.element.style.display = 'block'
-                          console.log(this.element)
-                                                    
-                            })*/
-                    
-
-                        
+                     
                         .then((moduleProduct)=>{
-                                      this.element.appendChild(moduleProduct)
+                            this.products = JSON.parse(localStorage.getItem('productData'))
+                                this.element.appendChild(moduleProduct)
 
-                                      let btn = document.getElementById('prev')
-                                      if (btn){
-                                          btn.addEventListener('click',()=>{
+                                let btnsAdd = document.querySelectorAll('.product__btn')
+                                btnsAdd.forEach((bntAdd) =>{
+                                     bntAdd.addEventListener('click', (event)=>{
+                                        this.addProduct(event.target.id)
+                                    }
+                                 )}) 
+
+                                let btn = document.getElementById('prev')
+                                     if (btn){
+                                        btn.addEventListener('click',()=>{
                                               location.hash ='catalog'
-                                          })
-                                      }
+                                        })
+                                    }
                                    
                         })
 
@@ -71,7 +66,33 @@ class Main{
         
     
     }
-    
+
+    addProduct(id){
+        let idProduct = id - 1 
+        let  productToCart =  this.products[idProduct]
+        if(this.basket.length == 0){
+            productToCart.count = 1;
+            this.basket.push(this.products[idProduct])
+            localStorage.setItem('basket', JSON.stringify(this.basket))
+        }else if(this.basket.length > 0) {
+            let flag = true
+            this.basket.forEach((item)=>{
+                if(item.id == id){
+                    item.count += 1;  
+                    localStorage.setItem('basket', JSON.stringify(this.basket))
+                    flag = false                  
+                }
+            })
+
+            if(flag){
+                productToCart.count = 1;
+                this.basket.push(this.products[idProduct])
+                localStorage.setItem('basket', JSON.stringify(this.basket))
+            }
+        }
+      
+        
+    }
 
     init(){
         return this.create()
